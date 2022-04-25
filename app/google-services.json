@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "371151779476",
+    "project_id": "we-share-4b5a7",
+    "storage_bucket": "we-share-4b5a7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:371151779476:android:735059e96ccb0396eb2681",
+        "android_client_info": {
+          "package_name": "com.hazyaz.weshare"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "371151779476-n2a11h5j9lmrrh81dqbvoteahqi3foun.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDq5jILcL7Nwsi-WS8G1r3_-jpHddH3oGQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "371151779476-n2a11h5j9lmrrh81dqbvoteahqi3foun.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

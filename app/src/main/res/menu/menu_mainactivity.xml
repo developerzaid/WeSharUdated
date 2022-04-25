@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/ic_baseline_home_24"
+            android:title="HOME" />
+        <item
+            android:id="@+id/nav_donater_login"
+            android:icon="@drawable/ic_baseline_self_improvement_24"
+            android:title="Donater Login" />
+        <item
+            android:id="@+id/nav_area_incharge"
+            android:icon="@drawable/ic_baseline_local_police_24"
+            android:title="Area Incharge" />
+        <item
+            android:id="@+id/nav_delivery_person"
+            android:icon="@drawable/ic_baseline_local_police_24"
+            android:title="Delivery Incharge" />
+
+        <item
+            android:id="@+id/nav_admin"
+            android:icon="@drawable/ic_baseline_verified_user_24"
+            android:title="Admin" />
+
+
+    </group>
+
+    <item android:title="Communicate">
+        <menu>
+            <item
+                android:id="@+id/nav_send"
+                android:icon="@drawable/ic_baseline_connect_without_contact_24"
+                android:title="Contact Us" />
+        </menu>
+    </item>
+
+</menu>
