@@ -9,6 +9,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -53,6 +54,9 @@ public class AIHome extends AppCompatActivity {
         uPhone = findViewById(R.id.UPhonex);
         uEmail = findViewById(R.id.UEmailx);
 
+        Toolbar toolbar = findViewById(R.id.toolbar54);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("AREA IN-CHARGE"); // for set actionbar title
 
         adapter = new MyListAdapter(donations, "AIHome", getApplicationContext(), DonationPreson);
 

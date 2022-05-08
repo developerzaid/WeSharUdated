@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -52,7 +53,13 @@ public class AIRegister extends AppCompatActivity {
         ai_email = findViewById(R.id.ai_reg_email);
         ai_phone = findViewById(R.id.ai_reg_PhoneNo);
         ai_city = findViewById(R.id.ai_reg_city);
+
         register_ai_button = findViewById(R.id.ai_reg_submit);
+        Toolbar toolbar = findViewById(R.id.toolbar54);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("AREA IN-CHARGE REGISTRATION");
+        // for set actionbar title
+
 
         StateSpinner = findViewById(R.id.states_spinner_ai_register);
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>

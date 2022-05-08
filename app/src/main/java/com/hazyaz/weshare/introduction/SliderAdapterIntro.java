@@ -33,19 +33,19 @@ public class SliderAdapterIntro extends PagerAdapter {
     };
     //array of images
     public String[] slide_title = {
-            "Welcome To We Share Donation App"
+            "We Share Donation App"
             , "Sharing is Caring"
             , "Secure Donation"
-            , "Know how your donation is being used"
+            , "Live Tracking of Donation"
             , "Get Notified"
     };
     //array of images
     public String[] slide_description = {
             " During COVID-19 many people has lost their jobs and it has impacted them so much. With this app we are trying to help them   "
-            , "Donate anything you want"
-            , "Secured by SSL/TLS and PCI compliant\n "
-            , "Monitor how your donation is being utilised"
-            , "Get Notified at each step "
+            , "The practice of sharing makes you understand when someone else is in need without them telling you the same. Also, sharing gives you a sense of responsibility towards society."
+            , "All of the donations are verified by the admins and area in-charge therefore no chance of fraud "
+            , "Monitor how your donation location at every movement until it is donated"
+            , "Get Notified at each step about the donation causes near your area"
     };
     Context context;
     LayoutInflater layoutInflater;

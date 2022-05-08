@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,6 +39,13 @@ public class DPLogin extends AppCompatActivity {
         email = findViewById(R.id.dp_email);
         dp_login = findViewById(R.id.dp_loginBtn);
         dp_register = findViewById(R.id.dp_register);
+
+        Toolbar toolbar = findViewById(R.id.toolbar54);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("DELIVERY LOGIN");
+
+
+
 
         dp_login.setOnClickListener(new View.OnClickListener() {
             @Override

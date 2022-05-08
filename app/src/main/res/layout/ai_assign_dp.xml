@@ -5,17 +5,18 @@
     android:layout_height="match_parent"
     tools:context=".users.areaincharge.AssignDP">
 
+<include layout="@layout/main_toolbar"
+    />
+
 
     <androidx.recyclerview.widget.RecyclerView
+        android:layout_marginTop="80dp"
         android:id="@+id/recyclerViewdeliveryperson"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scrollbars="vertical"></androidx.recyclerview.widget.RecyclerView>
+        android:scrollbars="vertical">
+    </androidx.recyclerview.widget.RecyclerView>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="sdfsdfsdfsdfsdfsdfsdf" />
 
 
 </RelativeLayout>

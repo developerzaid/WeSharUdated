@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".users.areaincharge.AIHome">
 
+<include layout="@layout/main_toolbar"/>
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardInfo"

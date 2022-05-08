@@ -14,6 +14,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -56,6 +57,10 @@ public class DonaterRegister extends AppCompatActivity {
         register_don_button = findViewById(R.id.don_reg_submit);
 
         donStateSpinner = findViewById(R.id.state_spinner_don_register);
+
+        Toolbar toolbar = findViewById(R.id.toolbar54);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("DONATER REGISTRATION");
 
         ArrayAdapter<String> spinnerArrayAdapter = new ArrayAdapter<String>
                 (this, android.R.layout.simple_spinner_item,

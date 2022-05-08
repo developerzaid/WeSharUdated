@@ -13,6 +13,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -38,8 +39,14 @@ public class DonaterLogin extends AppCompatActivity {
         username = findViewById(R.id.donater_username);
         pass = findViewById(R.id.donater_password);
         email = findViewById(R.id.donater_email);
+
         donaterlogin_button = findViewById(R.id.donater_loginBtn);
         donater_reg_button = findViewById(R.id.donater_register);
+
+        Toolbar toolbar = findViewById(R.id.toolbar54);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("DONATER LOGIN");
+
 
         donaterlogin_button.setOnClickListener(new View.OnClickListener() {
             @Override

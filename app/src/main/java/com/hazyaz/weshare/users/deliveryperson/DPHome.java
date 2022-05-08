@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -30,9 +32,10 @@ public class DPHome extends AppCompatActivity {
     FirebaseDatabase mFirebaseDatabase;
     DatabaseReference mDatabaseReference, innderDB, userDatabase, UserDonations;
     String xdonater, xdonation;
-    ArrayList<String> donationPerson;
+    ArrayList<String> donationPerson = new ArrayList<>();
     ArrayList<ArrayList<String>> donationsArray = new ArrayList<ArrayList<String>>();
     private Button mLocationReq;
+    TextView uName, uPhone, uCity, uEmail, totDonations;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,9 +50,21 @@ public class DPHome extends AppCompatActivity {
         userDatabase = mFirebaseDatabase.getReference("donater");
         UserDonations = mFirebaseDatabase.getReference("donater");
 
+
+        Toolbar toolbar = findViewById(R.id.toolbar54);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("DELIVERY HOME");
+
         getAllDeliveryDonations();
         getEachDonations();
 
+        uName = findViewById(R.id.UNamew);
+//        Address is City
+        uCity = findViewById(R.id.UCityw);
+        uPhone = findViewById(R.id.UPhonew);
+        uEmail = findViewById(R.id.UEmailw);
+
+         getUserInfo();
 
         recyclerView = findViewById(R.id.delivery_recyclerviewDelivery);
         adapter = new MyListAdapter(donationsArray, "DPHOME", getApplicationContext(), donationPerson);
@@ -70,6 +85,22 @@ public class DPHome extends AppCompatActivity {
             startActivity(new Intent(DPHome.this, DPLogin.class));
         }
     }
+    void getUserInfo() {
+
+
+                uName.setText("Rahul Verma");
+                uEmail.setText("rahul912@gmail.com");
+                uPhone.setText("+91 798 548 6649");
+                uCity.setText("Yashwant Nagar, Nalasopara West, Phalgar, Maharashtra 401203");
+
+
+    }
+
+
+
+
+
+
 
     void getAllDeliveryDonations() {
 
@@ -78,38 +109,26 @@ public class DPHome extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                 for (DataSnapshot isp : snapshot.getChildren()) {
-                    Log.d("sadas334", "" + isp.getValue() + isp.getKey());
-
 
                     mDatabaseReference.child(isp.getKey()).child("donations").addValueEventListener(new ValueEventListener() {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                             for (DataSnapshot lsp : snapshot.getChildren()) {
-
                                 xdonater = lsp.getKey();
                                 xdonation = lsp.child("donation_object").getValue().toString();
 
                                 Log.d("getalldeiver", " " + xdonation + xdonater);
                             }
-
                         }
-
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
-
                         }
                     });
-
-
-                    Log.d("sadas334", "" + isp.getValue() + isp.getKey());
-
                 }
             }
-
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
-
             }
         });
 
@@ -122,37 +141,28 @@ public class DPHome extends AppCompatActivity {
 
                 for (DataSnapshot dsp : snapshot.getChildren()) {
 
-                    Log.d("getalldeiver2 ", " " + dsp.getKey());
+                    String name = dsp.child("name").getValue().toString();
+                    String area = "";
+                    String city = dsp.child("city").getValue().toString();
+                    String state = dsp.child("state").getValue().toString();
+                    String phone = dsp.child("phone").getValue().toString();
+                    String email = dsp.child("email").getValue().toString();
 
+                    donationPerson.add(name);
+                    donationPerson.add(area);
+                    donationPerson.add(city);
+                    donationPerson.add(state);
+                    donationPerson.add(phone);
+                    donationPerson.add(email);
+                    donationPerson.add(mAuth.getUid());
 
-                    if (dsp.getKey().equals(xdonater)) {
-                        Log.d("getalldeiver3 ", " " + snapshot.getKey());
+                    Log.d("donation_person",name+state+"   "+mAuth.getUid());
 
-
-                        String uid = mAuth.getCurrentUser().getUid();
-
-                        String name = dsp.child("name").getValue().toString();
-                        String area = "";
-                        String city = dsp.child("city").getValue().toString();
-                        String state = dsp.child("state").getValue().toString();
-                        String phone = dsp.child("phone").getValue().toString();
-                        String email = dsp.child("email").getValue().toString();
-
-                        donationPerson.add(name);
-                        donationPerson.add(area);
-                        donationPerson.add(city);
-                        donationPerson.add(state);
-                        donationPerson.add(phone);
-                        donationPerson.add(email);
-
-
-                        userDatabase.child(dsp.getKey()).child("donations").addValueEventListener(new ValueEventListener() {
+                    userDatabase.child(dsp.getKey()).child("donations").addValueEventListener(new ValueEventListener() {
                             @Override
                             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
                                 for (DataSnapshot isp : snapshot.getChildren()) {
-
-                                    if (isp.getKey() == xdonation) {
 
                                         ArrayList<String> data = new ArrayList<>();
 
@@ -169,17 +179,14 @@ public class DPHome extends AppCompatActivity {
                                         data.add(ImageXX);
                                         data.add(donationWith);
                                         data.add(CurrentLocation);
-                                        data.add("");
-                                        data.add("");
 
-
-                                        Log.d("getalldeiver ", " " + donationName + donationDesc);
+                                        data.add(xdonater);
+                                        data.add(xdonation );
 
 
                                         donationsArray.add(data);
                                         adapter.notifyDataSetChanged();
 
-                                    }
 
                                 }
                             }
@@ -190,7 +197,7 @@ public class DPHome extends AppCompatActivity {
                             }
                         });
                     }
-                }
+//                }
 
             }
 

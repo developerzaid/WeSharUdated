@@ -2,8 +2,10 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
+    android:orientation="vertical"
     android:layout_height="match_parent">
 
+    <include layout="@layout/main_toolbar"/>
 
     <ScrollView
         android:layout_width="match_parent"
@@ -17,26 +19,25 @@
             android:orientation="vertical">
 
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_marginBottom="20dp"
-                android:text="DONATER ACCOUNT REGISTRATION"
-                android:textColor="#FF9800"
-                android:textSize="20sp"
-                android:textStyle="bold" />
-
             <com.airbnb.lottie.LottieAnimationView
                 android:id="@+id/animationView"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
-                android:layout_marginBottom="30dp"
+                android:layout_marginBottom="20dp"
                 app:lottie_autoPlay="true"
 
                 app:lottie_fileName="login.json"
                 app:lottie_loop="true" />
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:text="DONATER ACCOUNT REGISTRATION"
+                android:textColor="#FF9800"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <EditText
                 android:id="@+id/don_reg_name"

@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -39,6 +40,11 @@ public class AdminLogin extends AppCompatActivity {
         admin_password = findViewById(R.id.admin_password);
         admin_email = findViewById(R.id.admin_email);
         loginBtn = findViewById(R.id.loginBtn);
+
+        Toolbar toolbar = findViewById(R.id.toolbar54);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("ADMIN"); // for set actionbar title
+
 
         mAuth = FirebaseAuth.getInstance();
         loginBtn.setOnClickListener(new View.OnClickListener() {

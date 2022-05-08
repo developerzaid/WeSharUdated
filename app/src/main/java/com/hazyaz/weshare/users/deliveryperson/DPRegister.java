@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -50,6 +51,12 @@ public class DPRegister extends AppCompatActivity {
         dp_email = findViewById(R.id.dp_reg_email);
         dp_phone = findViewById(R.id.dp_reg_PhoneNo);
         dp_city = findViewById(R.id.dp_city);
+
+        Toolbar toolbar = findViewById(R.id.toolbar54);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("DELIVERY REGISTER");
+
+
 
         register_dp_button = findViewById(R.id.dp_reg_submit);
 

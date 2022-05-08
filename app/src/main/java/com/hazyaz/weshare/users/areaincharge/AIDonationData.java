@@ -10,10 +10,17 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.hazyaz.weshare.MainActivity;
 import com.hazyaz.weshare.R;
 import com.hazyaz.weshare.maps;
 import com.squareup.picasso.Picasso;
@@ -26,12 +33,25 @@ public class AIDonationData extends AppCompatActivity {
     TextView name, city, phone, itemname, itemdesc, areax, currentlocationx, xTrackDonation;
     ImageView imageViewd;
     String donation_uid, person_uid;
+    FirebaseDatabase mfirebaseDatabase;
+    DatabaseReference mdatabaseReference;
     Uri mImageUri;
+    FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.ai_donation_data);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        mfirebaseDatabase = FirebaseDatabase.getInstance();
+
+        mdatabaseReference = mfirebaseDatabase.getReference().child("donater");
+
+        Toolbar toolbar = findViewById(R.id.toolbar54);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("DETAILED DONATION INFO"); // for set actionbar title
 
         Intent intent = getIntent();
 
@@ -97,7 +117,15 @@ public class AIDonationData extends AppCompatActivity {
 
                     startActivity(i);
                 } else if (acti.equals("DPHOME")) {
-                    Toast.makeText(getApplicationContext(), "sdfsdf", Toast.LENGTH_LONG).show();
+
+                    mdatabaseReference.child(donation_uid).child("donations").child(person_uid).child("current_location").setValue(MainActivity.lat+","+MainActivity.lon);
+                    mdatabaseReference.child(donation_uid).child("donations").child(person_uid).child("donation_with").setValue("Delivery Person");
+
+
+                Log.d("yjd34s ",person_uid+ "    "+donation_uid);
+
+                    Toast.makeText(getApplicationContext(), "Donation Accepted", Toast.LENGTH_LONG).show();
+                    btn.setVisibility(View.GONE);
                 }
 
             }

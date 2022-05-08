@@ -77,6 +77,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
 
+
+
+
+
         home = findViewById(R.id.homeBtn);
         call = findViewById(R.id.Call);
         location = findViewById(R.id.Location);
@@ -191,16 +195,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         facebook.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Facebook Button Pressed", Toast.LENGTH_LONG).show();
-                openLocationSetting();
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("https://www.facebook.com/donate/630215601093919/"));
+                startActivity(intent);
             }
         });
 
         instagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(), "Instagram Button Pressed", Toast.LENGTH_LONG).show();
-                new GetLocation(MainActivity.this);
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("https://www.instagram.com/give_india/?hl=en"));
+                startActivity(intent);
             }
         });
 
@@ -247,6 +253,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 })
                 .check();
     }
+
 
 
 }

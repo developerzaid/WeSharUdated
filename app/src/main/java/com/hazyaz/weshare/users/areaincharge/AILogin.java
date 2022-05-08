@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -44,6 +45,11 @@ public class AILogin extends AppCompatActivity {
         loginBtn = findViewById(R.id.ai_loginBtn);
         mAuth = FirebaseAuth.getInstance();
         aiRegisterButton = findViewById(R.id.ai_register);
+
+        Toolbar toolbar = findViewById(R.id.toolbar54);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("AREA INCHARGE LOGIN"); // for set actionbar title
+
 
 
         aiRegisterButton.setOnClickListener(new View.OnClickListener() {

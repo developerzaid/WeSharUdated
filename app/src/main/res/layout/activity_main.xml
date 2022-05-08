@@ -154,6 +154,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_marginRight="10dp"
@@ -179,6 +180,7 @@
                 android:orientation="horizontal">
 
                 <ImageView
+
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_marginRight="10dp"
@@ -187,6 +189,7 @@
                     android:src="@drawable/do4" />
 
                 <ImageView
+
                     android:layout_width="0dp"
                     android:layout_height="200dp"
                     android:layout_marginLeft="10dp"
@@ -195,6 +198,57 @@
 
 
             </LinearLayout>
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ABOUT US"
+                android:textAlignment="center"
+                android:textColor="#FF9800"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+
+                android:layout_margin="20dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="We Share is India’s leading independent donation app, which works in 18 states of the country. Beginning its journey in 2008 in India, and registered as ‘Bal Raksha Bharat’, we have changed the lives of more than 11 million (1.1 crore) people.
+
+We firmly believe that every person deserves the best chance for a bright future, which is why, we are fiercely committed to ensure that people not only survive, but thrive. With a bold ambition and a powerful vigilance, we do whatever it takes to save the people.
+
+In India and across the world, We Share works on-ground – every day and especially, in times of crisis. Our pioneering programs address people’s unique needs; giving them a healthy start, an opportunity to learn as well as protection from harm. When crisis strikes, we are always among the first to respond and the last to leave.
+
+"
+                android:textAlignment="center"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:id="@+id/donate_now_image"
+                android:src="@drawable/do7"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="👇 SUPPORT THE CAUSE ☝️"
+                android:textAlignment="center"
+                android:textColor="#FF9800"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+
+            <ImageView
+                android:layout_margin="10dp"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:id="@+id/donate78"
+                android:src="@drawable/do8"/>
 
 
         </LinearLayout>
