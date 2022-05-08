@@ -78,9 +78,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         });
 
 
-
-
-
         home = findViewById(R.id.homeBtn);
         call = findViewById(R.id.Call);
         location = findViewById(R.id.Location);
@@ -253,7 +250,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 })
                 .check();
     }
-
 
 
 }

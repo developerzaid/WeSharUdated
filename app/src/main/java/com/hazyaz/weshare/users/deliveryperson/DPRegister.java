@@ -57,7 +57,6 @@ public class DPRegister extends AppCompatActivity {
         getSupportActionBar().setTitle("DELIVERY REGISTER");
 
 
-
         register_dp_button = findViewById(R.id.dp_reg_submit);
 
         dpStateSpinner = findViewById(R.id.state_spinner_dp_register);

@@ -51,7 +51,6 @@ public class AILogin extends AppCompatActivity {
         getSupportActionBar().setTitle("AREA INCHARGE LOGIN"); // for set actionbar title
 
 
-
         aiRegisterButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

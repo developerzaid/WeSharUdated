@@ -200,9 +200,9 @@
             </LinearLayout>
 
             <TextView
-                android:layout_marginTop="10dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
                 android:text="ABOUT US"
                 android:textAlignment="center"
                 android:textColor="#FF9800"
@@ -211,9 +211,9 @@
 
             <TextView
 
-                android:layout_margin="20dp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
                 android:text="We Share is India’s leading independent donation app, which works in 18 states of the country. Beginning its journey in 2008 in India, and registered as ‘Bal Raksha Bharat’, we have changed the lives of more than 11 million (1.1 crore) people.
 
 We firmly believe that every person deserves the best chance for a bright future, which is why, we are fiercely committed to ensure that people not only survive, but thrive. With a bold ambition and a powerful vigilance, we do whatever it takes to save the people.
@@ -227,11 +227,11 @@ In India and across the world, We Share works on-ground – every day and especi
 
 
             <ImageView
-                android:layout_margin="10dp"
+                android:id="@+id/donate_now_image"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:id="@+id/donate_now_image"
-                android:src="@drawable/do7"/>
+                android:layout_margin="10dp"
+                android:src="@drawable/do7" />
 
             <TextView
                 android:layout_width="match_parent"
@@ -244,11 +244,11 @@ In India and across the world, We Share works on-ground – every day and especi
 
 
             <ImageView
-                android:layout_margin="10dp"
+                android:id="@+id/donate78"
                 android:layout_width="match_parent"
                 android:layout_height="400dp"
-                android:id="@+id/donate78"
-                android:src="@drawable/do8"/>
+                android:layout_margin="10dp"
+                android:src="@drawable/do8" />
 
 
         </LinearLayout>

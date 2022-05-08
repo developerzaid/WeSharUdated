@@ -1,104 +1,104 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout   xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
     android:layout_height="match_parent"
-    android:background="@color/colorAccent">
+    android:background="@color/colorAccent"
+    android:orientation="vertical">
 
-    <include layout="@layout/main_toolbar"/>
+    <include layout="@layout/main_toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
-
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animationView"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="20dp"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="login.json"
-            app:lottie_loop="true" />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
-            android:text="AREA IN-CHARGE ACCOUNT LOGIN"
-            android:textColor="#FF9800"
-            android:textSize="20sp"
-            android:textStyle="bold"
-
-            />
-
-        <EditText
-
-            android:id="@+id/ai_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:cursorVisible="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:hint="USER NAME"
-            android:textCursorDrawable="@null"
-
-            ></EditText>
+            android:layout_height="match_parent"
+            android:layout_margin="20dp"
+            android:orientation="vertical">
 
 
-        <EditText
-            android:id="@+id/ai_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:cursorVisible="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:hint="Email"
-            android:textCursorDrawable="@null"></EditText>
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="20dp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="login.json"
+                app:lottie_loop="true" />
 
-        <EditText
-            android:id="@+id/ai_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:cursorVisible="true"
-            android:focusable="true"
-            android:focusableInTouchMode="true"
-            android:hint="Password"
-            android:textCursorDrawable="@null">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:text="AREA IN-CHARGE ACCOUNT LOGIN"
+                android:textColor="#FF9800"
+                android:textSize="20sp"
+                android:textStyle="bold"
 
-        </EditText>
+                />
 
-        <Button
-            android:id="@+id/ai_loginBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/button_background"
-            android:text="Login "
-            android:textColor="@color/colorAccent"></Button>
+            <EditText
 
-        <Button
-            android:id="@+id/ai_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="40dp"
-            android:background="@drawable/button_background"
-            android:text="Register as Area Incharge"
-            android:textColor="#000000">
+                android:id="@+id/ai_username"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="USER NAME"
+                android:textCursorDrawable="@null"
 
-        </Button>
+                ></EditText>
 
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/ai_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="Email"
+                android:textCursorDrawable="@null"></EditText>
+
+            <EditText
+                android:id="@+id/ai_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:cursorVisible="true"
+                android:focusable="true"
+                android:focusableInTouchMode="true"
+                android:hint="Password"
+                android:textCursorDrawable="@null">
+
+            </EditText>
+
+            <Button
+                android:id="@+id/ai_loginBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_background"
+                android:text="Login "
+                android:textColor="@color/colorAccent"></Button>
+
+            <Button
+                android:id="@+id/ai_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="40dp"
+                android:background="@drawable/button_background"
+                android:text="Register as Area Incharge"
+                android:textColor="#000000">
+
+            </Button>
+
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

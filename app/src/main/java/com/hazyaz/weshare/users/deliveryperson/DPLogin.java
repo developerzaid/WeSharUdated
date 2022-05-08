@@ -45,8 +45,6 @@ public class DPLogin extends AppCompatActivity {
         getSupportActionBar().setTitle("DELIVERY LOGIN");
 
 
-
-
         dp_login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

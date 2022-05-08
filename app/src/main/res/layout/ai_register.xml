@@ -2,110 +2,110 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:orientation="vertical"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <include layout="@layout/main_toolbar"/>
+    <include layout="@layout/main_toolbar" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:orientation="vertical">
-
-
-        <com.airbnb.lottie.LottieAnimationView
-            android:id="@+id/animationView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:layout_marginBottom="20dp"
-            app:lottie_autoPlay="true"
-            app:lottie_fileName="login.json"
-            app:lottie_loop="true" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginBottom="30dp"
-            android:text="AREA IN-CHARGE REGISTRATION"
-            android:textColor="#FF9800"
-            android:textSize="20sp"
-            android:textStyle="bold"
-
-            />
-
-        <EditText
-            android:id="@+id/ai_reg_name"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Name"
-            android:textColor="@color/colorPrimaryDark" />
-
-        <EditText
-            android:id="@+id/ai_reg_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email" />
+            android:layout_margin="20dp"
+            android:orientation="vertical">
 
 
-        <EditText
-            android:id="@+id/ai_reg_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:inputType="textPassword" />
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/animationView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginBottom="20dp"
+                app:lottie_autoPlay="true"
+                app:lottie_fileName="login.json"
+                app:lottie_loop="true" />
 
-        <EditText
-            android:id="@+id/ai_reg_PhoneNo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Phone Number"
-            android:inputType="number"></EditText>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginBottom="30dp"
+                android:text="AREA IN-CHARGE REGISTRATION"
+                android:textColor="#FF9800"
+                android:textSize="20sp"
+                android:textStyle="bold"
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:text="Select Your State"
-            android:textColor="@color/black"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+                />
 
-        <Spinner
-            android:id="@+id/states_spinner_ai_register"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp" />
+            <EditText
+                android:id="@+id/ai_reg_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Name"
+                android:textColor="@color/colorPrimaryDark" />
 
-
-        <EditText
-            android:id="@+id/ai_reg_city"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
-            android:hint="City" />
-
-        <Button
-
-            android:id="@+id/ai_reg_submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/button_background"
-            android:text="Submit"
-            android:textColor="@color/white">
-
-        </Button>
+            <EditText
+                android:id="@+id/ai_reg_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Email" />
 
 
-    </LinearLayout>
+            <EditText
+                android:id="@+id/ai_reg_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Password"
+                android:inputType="textPassword" />
+
+            <EditText
+                android:id="@+id/ai_reg_PhoneNo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Phone Number"
+                android:inputType="number"></EditText>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Select Your State"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <Spinner
+                android:id="@+id/states_spinner_ai_register"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" />
+
+
+            <EditText
+                android:id="@+id/ai_reg_city"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:hint="City" />
+
+            <Button
+
+                android:id="@+id/ai_reg_submit"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="30dp"
+                android:background="@drawable/button_background"
+                android:text="Submit"
+                android:textColor="@color/white">
+
+            </Button>
+
+
+        </LinearLayout>
     </ScrollView>
 
 </LinearLayout>

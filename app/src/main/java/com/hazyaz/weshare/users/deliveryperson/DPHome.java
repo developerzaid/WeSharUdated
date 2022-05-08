@@ -34,8 +34,8 @@ public class DPHome extends AppCompatActivity {
     String xdonater, xdonation;
     ArrayList<String> donationPerson = new ArrayList<>();
     ArrayList<ArrayList<String>> donationsArray = new ArrayList<ArrayList<String>>();
-    private Button mLocationReq;
     TextView uName, uPhone, uCity, uEmail, totDonations;
+    private Button mLocationReq;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +64,7 @@ public class DPHome extends AppCompatActivity {
         uPhone = findViewById(R.id.UPhonew);
         uEmail = findViewById(R.id.UEmailw);
 
-         getUserInfo();
+        getUserInfo();
 
         recyclerView = findViewById(R.id.delivery_recyclerviewDelivery);
         adapter = new MyListAdapter(donationsArray, "DPHOME", getApplicationContext(), donationPerson);
@@ -85,21 +85,17 @@ public class DPHome extends AppCompatActivity {
             startActivity(new Intent(DPHome.this, DPLogin.class));
         }
     }
+
     void getUserInfo() {
 
 
-                uName.setText("Rahul Verma");
-                uEmail.setText("rahul912@gmail.com");
-                uPhone.setText("+91 798 548 6649");
-                uCity.setText("Yashwant Nagar, Nalasopara West, Phalgar, Maharashtra 401203");
+        uName.setText("Rahul Verma");
+        uEmail.setText("rahul912@gmail.com");
+        uPhone.setText("+91 798 548 6649");
+        uCity.setText("Yashwant Nagar, Nalasopara West, Phalgar, Maharashtra 401203");
 
 
     }
-
-
-
-
-
 
 
     void getAllDeliveryDonations() {
@@ -121,12 +117,14 @@ public class DPHome extends AppCompatActivity {
                                 Log.d("getalldeiver", " " + xdonation + xdonater);
                             }
                         }
+
                         @Override
                         public void onCancelled(@NonNull DatabaseError error) {
                         }
                     });
                 }
             }
+
             @Override
             public void onCancelled(@NonNull DatabaseError error) {
             }
@@ -156,47 +154,47 @@ public class DPHome extends AppCompatActivity {
                     donationPerson.add(email);
                     donationPerson.add(mAuth.getUid());
 
-                    Log.d("donation_person",name+state+"   "+mAuth.getUid());
+                    Log.d("donation_person", name + state + "   " + mAuth.getUid());
 
                     userDatabase.child(dsp.getKey()).child("donations").addValueEventListener(new ValueEventListener() {
-                            @Override
-                            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                        @Override
+                        public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                                for (DataSnapshot isp : snapshot.getChildren()) {
+                            for (DataSnapshot isp : snapshot.getChildren()) {
 
-                                        ArrayList<String> data = new ArrayList<>();
+                                ArrayList<String> data = new ArrayList<>();
 
-                                        String donationName = isp.child("donation_name").getValue().toString();
-                                        String donationDesc = isp.child("donation_desc").getValue().toString();
-                                        String timestamp = isp.child("timestamp").getValue().toString();
-                                        String ImageXX = isp.child("donation_image").getValue().toString();
-                                        String donationWith = isp.child("donation_with").getValue().toString();
-                                        String CurrentLocation = isp.child("current_location").getValue().toString();
+                                String donationName = isp.child("donation_name").getValue().toString();
+                                String donationDesc = isp.child("donation_desc").getValue().toString();
+                                String timestamp = isp.child("timestamp").getValue().toString();
+                                String ImageXX = isp.child("donation_image").getValue().toString();
+                                String donationWith = isp.child("donation_with").getValue().toString();
+                                String CurrentLocation = isp.child("current_location").getValue().toString();
 
-                                        data.add(donationName);
-                                        data.add(donationDesc);
-                                        data.add(timestamp);
-                                        data.add(ImageXX);
-                                        data.add(donationWith);
-                                        data.add(CurrentLocation);
+                                data.add(donationName);
+                                data.add(donationDesc);
+                                data.add(timestamp);
+                                data.add(ImageXX);
+                                data.add(donationWith);
+                                data.add(CurrentLocation);
 
-                                        data.add(xdonater);
-                                        data.add(xdonation );
-
-
-                                        donationsArray.add(data);
-                                        adapter.notifyDataSetChanged();
+                                data.add(xdonater);
+                                data.add(xdonation);
 
 
-                                }
-                            }
+                                donationsArray.add(data);
+                                adapter.notifyDataSetChanged();
 
-                            @Override
-                            public void onCancelled(@NonNull DatabaseError error) {
 
                             }
-                        });
-                    }
+                        }
+
+                        @Override
+                        public void onCancelled(@NonNull DatabaseError error) {
+
+                        }
+                    });
+                }
 //                }
 
             }

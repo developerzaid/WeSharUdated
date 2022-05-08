@@ -10,16 +10,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.hazyaz.weshare.MainActivity;
 import com.hazyaz.weshare.R;
 import com.hazyaz.weshare.maps;
@@ -118,11 +114,11 @@ public class AIDonationData extends AppCompatActivity {
                     startActivity(i);
                 } else if (acti.equals("DPHOME")) {
 
-                    mdatabaseReference.child(donation_uid).child("donations").child(person_uid).child("current_location").setValue(MainActivity.lat+","+MainActivity.lon);
+                    mdatabaseReference.child(donation_uid).child("donations").child(person_uid).child("current_location").setValue(MainActivity.lat + "," + MainActivity.lon);
                     mdatabaseReference.child(donation_uid).child("donations").child(person_uid).child("donation_with").setValue("Delivery Person");
 
 
-                Log.d("yjd34s ",person_uid+ "    "+donation_uid);
+                    Log.d("yjd34s ", person_uid + "    " + donation_uid);
 
                     Toast.makeText(getApplicationContext(), "Donation Accepted", Toast.LENGTH_LONG).show();
                     btn.setVisibility(View.GONE);

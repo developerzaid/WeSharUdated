@@ -63,33 +63,30 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
                 Intent i = new Intent(context, AIDonationData.class);
 
 
+                i.putExtra("itemname", myListData.get(0));
+                i.putExtra("itemdesc", myListData.get(1));
+                i.putExtra("time", myListData.get(2));
+                i.putExtra("Image", myListData.get(3));
+                i.putExtra("donation_with", myListData.get(4));
+                i.putExtra("current_location", myListData.get(5));
 
-                     i.putExtra("itemname", myListData.get(0));
-                     i.putExtra("itemdesc", myListData.get(1));
-                     i.putExtra("time", myListData.get(2));
-                     i.putExtra("Image", myListData.get(3));
-                     i.putExtra("donation_with", myListData.get(4));
-                     i.putExtra("current_location", myListData.get(5));
+                i.putExtra("donation_key", myListData.get(6));
+                i.putExtra("person_key", myListData.get(7));
 
-                     i.putExtra("donation_key", myListData.get(6));
-                     i.putExtra("person_key", myListData.get(7));
+                Log.d("donation_person", personData.get(2) + "   ");
 
-                Log.d("donation_person",personData.get(2)+"   ");
+                i.putExtra("name", personData.get(0));
+                i.putExtra("area", personData.get(1));
+                i.putExtra("city", personData.get(2));
+                i.putExtra("state", personData.get(3));
+                i.putExtra("phone", personData.get(4));
+                i.putExtra("email", personData.get(5));
+                i.putExtra("activity", classNames);
 
-                     i.putExtra("name", personData.get(0));
-                     i.putExtra("area", personData.get(1));
-                     i.putExtra("city", personData.get(2));
-                     i.putExtra("state", personData.get(3));
-                     i.putExtra("phone", personData.get(4));
-                     i.putExtra("email", personData.get(5));
-                     i.putExtra("activity", classNames);
-
-                     if(classNames.equals("DPHOME")){
-                         i.putExtra("DeliveryPersonUID", personData.get(7));
-                     }
-                     i.putExtra("DeliveryPersonUID", "null");
-
-
+                if (classNames.equals("DPHOME")) {
+                    i.putExtra("DeliveryPersonUID", personData.get(7));
+                }
+                i.putExtra("DeliveryPersonUID", "null");
 
 
                 i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
