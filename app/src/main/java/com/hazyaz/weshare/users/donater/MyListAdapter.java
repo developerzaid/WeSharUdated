@@ -2,23 +2,20 @@ package com.hazyaz.weshare.users.donater;
 
 import android.content.Context;
 import android.content.Intent;
-import android.net.Uri;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
+
 
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.airbnb.lottie.animation.content.Content;
 import com.hazyaz.weshare.R;
 import com.hazyaz.weshare.users.areaincharge.AIDonationData;
+import com.hazyaz.weshare.users.deliveryperson.UpdateDP;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -51,17 +48,43 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
         if(classNames.equals("AssignDP")){
 
             holder.name.setText(personData.get(0));
-            holder.desc.setText(personData.get(1));
-            Picasso.get()
-                    .load(personData.get(3))
-                    .into(holder.imageViewxx);
+            holder.desc.setText(personData.get(1)+" Phone No "+personData.get(2));
+//            Picasso.get()
+//                    .load(personData.get(3))
+//                    .into(holder.imageViewxx);
+
             holder.location.setVisibility(View.GONE);
 
+            String person_key = personData.get(7);
+            String donation_key = personData.get(8);
+            String delivery_person = personData.get(9);
+
+
+            holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent i = new Intent(context, UpdateDP.class);
+
+//                    Donater UID
+                    i.putExtra("person_key",person_key);
+//                    Donation UID
+                    i.putExtra("donation_key",donation_key);
+                    i.putExtra("delivery_person",delivery_person);
+
+
+
+                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    context.startActivity(i);
+
+
+                }
+            });
         }
         else{
             final ArrayList<String> myListData = listdata.get(position);
 
-            Log.d("23djfjsdf","Inside My lsit");
+            Log.d("","Inside My list");
             holder.name.setText(myListData.get(0));
             holder.desc.setText(myListData.get(1));
             Picasso.get()
@@ -83,6 +106,9 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
                     i.putExtra("Image",myListData.get(3));
                     i.putExtra("donation_with",myListData.get(4));
                     i.putExtra("current_location",myListData.get(5));
+                    i.putExtra("donation_key",myListData.get(6));
+                    i.putExtra("person_key",myListData.get(7));
+
 
                     i.putExtra("name",personData.get(0));
                     i.putExtra("area",personData.get(1));
@@ -91,6 +117,7 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
                     i.putExtra("phone",personData.get(4));
                     i.putExtra("email",personData.get(5));
                     i.putExtra("activity",classNames);
+                    i.putExtra("DeliveryPersonUID","null");
 
 
                     i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);

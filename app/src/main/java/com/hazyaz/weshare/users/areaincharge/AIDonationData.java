@@ -49,6 +49,9 @@ public class AIDonationData extends AppCompatActivity {
         setContentView(R.layout.ai_donation_data);
 
         Intent intent = getIntent();
+
+
+
         String uName = intent.getStringExtra("name");
         String uCity = intent.getStringExtra("city");
         String area = intent.getStringExtra("area");
@@ -63,6 +66,11 @@ public class AIDonationData extends AppCompatActivity {
         String Image = intent.getStringExtra("Image");
         String donation_with = intent.getStringExtra("donation_with");
         String current_location = intent.getStringExtra("current_location");
+
+        String donation_uid = intent.getStringExtra("donation_key");
+        String person_uid = intent.getStringExtra("person_key");
+
+
 
         String acti = intent.getStringExtra("activity");
 
@@ -95,6 +103,13 @@ public class AIDonationData extends AppCompatActivity {
                     startActivity(i);
                 }
                 else if(acti.equals("AIHome")){
+                    Log.d("insidebtton","inside button");
+
+                    Intent i =new Intent(AIDonationData.this,AssignDP.class);
+                    i.putExtra("uid_person",person_uid);
+                    i.putExtra("uid_donation",donation_uid);
+                    startActivity(i);
+
 
                 }
 

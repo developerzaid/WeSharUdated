@@ -10,12 +10,10 @@ import androidx.navigation.ui.AppBarConfiguration;
 
 import android.Manifest;
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.location.Location;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
@@ -27,11 +25,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.android.gms.location.FusedLocationProviderClient;
-import com.google.android.gms.location.GeofencingEvent;
-import com.google.android.gms.location.LocationServices;
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.Task;
 import com.google.android.material.navigation.NavigationView;
 import com.hazyaz.weshare.introduction.Introduction;
 import com.hazyaz.weshare.users.admin.AdminHome;
@@ -47,12 +40,9 @@ import com.karumi.dexter.listener.PermissionRequest;
 import com.karumi.dexter.listener.single.PermissionListener;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-    private AppBarConfiguration mAppBarConfiguration;
-
 
     public static String lat ;
     public static String lon;
-
     public ActionBarDrawerToggle actionBarDrawerToggle;
     Button bttt;
     ImageView home, call, location,facebook,instagram;

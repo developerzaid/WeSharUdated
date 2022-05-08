@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -24,8 +25,10 @@ public class AssignDP extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<String> deliveryPerson;
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference;
+    DatabaseReference databaseReference, updatedp;
     FirebaseAuth mAuth;
+    String donation_key,person_key;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,6 +39,11 @@ public class AssignDP extends AppCompatActivity {
         firebaseDatabase = FirebaseDatabase.getInstance();
         databaseReference = firebaseDatabase.getReference("delivery_person");
 
+        updatedp = firebaseDatabase.getReference("donater");
+
+        Intent intent = getIntent();
+        donation_key = intent.getStringExtra("donation_key");
+        person_key = intent.getStringExtra("person_key");
 
         recyclerView = findViewById(R.id.recyclerViewdeliveryperson);
 
@@ -54,23 +62,32 @@ public class AssignDP extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String name, city, area,email , phone, state, Image;
+                String name, city, area,email , phone, state, Image,key_donation;
                 name = snapshot.child("name").getValue().toString();
                 email = snapshot.child("email").getValue().toString();
                 phone = snapshot.child("phone").getValue().toString();
 
-                area = snapshot.child("area").getValue().toString();
+//              area = snapshot.child("area").getValue().toString();
                 city = snapshot.child("city").getValue().toString();
                 state = snapshot.child("state").getValue().toString();
-                Image = snapshot.child("image").getValue().toString();
+//              Image = snapshot.child("image").getValue().toString();
+
+
 
                 deliveryPerson.add(name);
                 deliveryPerson.add(email);
                 deliveryPerson.add(phone);
-                deliveryPerson.add(area);
+
+                deliveryPerson.add(" ");
                 deliveryPerson.add(city);
                 deliveryPerson.add(state);
-                deliveryPerson.add(Image);
+//              deliveryPerson.add(Image);
+                deliveryPerson.add(snapshot.getKey());
+                deliveryPerson.add(person_key);
+                deliveryPerson.add(donation_key);
+                deliveryPerson.add(snapshot.getKey());
+
+
 
 
             }

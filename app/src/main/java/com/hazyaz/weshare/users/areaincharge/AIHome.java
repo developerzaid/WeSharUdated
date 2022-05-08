@@ -49,11 +49,6 @@ public class AIHome extends AppCompatActivity {
 
         mAuth = FirebaseAuth.getInstance();
 
-
-
-//
-
-
         recyclerView = findViewById(R.id.recyclerViewi);
 
         uName = findViewById(R.id.UNamex);
@@ -88,7 +83,7 @@ public class AIHome extends AppCompatActivity {
                 String uid  = mAuth.getCurrentUser().getUid();
 
                 String name = snapshot.child(uid).child("name").getValue().toString();
-                String area = snapshot.child(uid).child("area").getValue().toString();
+                String area = "";
                 String city = snapshot.child(uid).child("city").getValue().toString();
                 String state = snapshot.child(uid).child("state").getValue().toString();
                 String phone = snapshot.child(uid).child("phone").getValue().toString();
@@ -101,6 +96,7 @@ public class AIHome extends AppCompatActivity {
                 DonationPreson.add(phone);
                 DonationPreson.add(email);
 
+                Log.d("AIData1",""+name+email);
                 uName.setText(name);
                 uEmail.setText(email);
                 uPhone.setText(phone);
@@ -152,6 +148,7 @@ public class AIHome extends AppCompatActivity {
                                     data.add(CurrentLocation);
                                     data.add(keyy);
                                     data.add(userKey);
+                                Log.d("AIData2",""+donationDesc);
 
                                     donations.add(data);
 
@@ -198,6 +195,7 @@ public class AIHome extends AppCompatActivity {
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
+        Log.d("thisiscurrent",""+currentUser);
         if(currentUser==null){
             startActivity(new Intent(AIHome.this, AILogin.class));
         }
