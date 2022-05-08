@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -15,15 +16,14 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.hazyaz.weshare.R;
-import com.hazyaz.weshare.users.donater.MyListAdapter;
 
 import java.util.ArrayList;
 
 public class AssignDP extends AppCompatActivity {
 
-    MyListAdapter adapter;
+    UpdateDP adapter;
     RecyclerView recyclerView;
-    ArrayList<String> deliveryPerson;
+    ArrayList<String> deliveryPerson = new ArrayList<>();
     FirebaseDatabase firebaseDatabase;
     DatabaseReference databaseReference, updatedp;
     FirebaseAuth mAuth;
@@ -40,20 +40,21 @@ public class AssignDP extends AppCompatActivity {
         databaseReference = firebaseDatabase.getReference("delivery_person");
 
         updatedp = firebaseDatabase.getReference("donater");
-
+        getallDeliveryPerson();
         Intent intent = getIntent();
         donation_key = intent.getStringExtra("donation_key");
         person_key = intent.getStringExtra("person_key");
 
-        recyclerView = findViewById(R.id.recyclerViewdeliveryperson);
 
-        adapter = new MyListAdapter(new ArrayList<ArrayList<String>>(),"AssignDP",getApplicationContext(),deliveryPerson);
+
+        recyclerView = findViewById(R.id.recyclerViewdeliveryperson);
+        adapter = new UpdateDP(deliveryPerson,getApplicationContext());
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
 
-         getallDeliveryPerson();
+
 
     }
 
@@ -62,30 +63,28 @@ public class AssignDP extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String name, city, area,email , phone, state, Image,key_donation;
-                name = snapshot.child("name").getValue().toString();
-                email = snapshot.child("email").getValue().toString();
-                phone = snapshot.child("phone").getValue().toString();
+                Log.d("sdfsdf34234",""+snapshot.getValue());
+                for (DataSnapshot dsp: snapshot.getChildren()){
 
-//              area = snapshot.child("area").getValue().toString();
-                city = snapshot.child("city").getValue().toString();
-                state = snapshot.child("state").getValue().toString();
-//              Image = snapshot.child("image").getValue().toString();
+                    String name, city, area,email , phone, state, Image,key_donation;
+                     name = dsp.child("name").getValue().toString();
+                    email = dsp.child("email").getValue().toString();
+                    phone = dsp.child("phone").getValue().toString();
+                    city = dsp.child("city").getValue().toString();
+                    state = dsp.child("state").getValue().toString();
 
+                    deliveryPerson.add(name);
+                    deliveryPerson.add(email);
+                    deliveryPerson.add(phone);
+                    deliveryPerson.add(city);
+                    deliveryPerson.add(state);
 
+                    deliveryPerson.add(person_key);
+                    deliveryPerson.add(donation_key);
+                    deliveryPerson.add(dsp.getKey());
 
-                deliveryPerson.add(name);
-                deliveryPerson.add(email);
-                deliveryPerson.add(phone);
-
-                deliveryPerson.add(" ");
-                deliveryPerson.add(city);
-                deliveryPerson.add(state);
-//              deliveryPerson.add(Image);
-                deliveryPerson.add(snapshot.getKey());
-                deliveryPerson.add(person_key);
-                deliveryPerson.add(donation_key);
-                deliveryPerson.add(snapshot.getKey());
+                }
+               adapter.notifyDataSetChanged();
 
 
 

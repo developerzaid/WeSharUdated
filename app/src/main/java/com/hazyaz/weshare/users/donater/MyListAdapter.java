@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hazyaz.weshare.R;
 import com.hazyaz.weshare.users.areaincharge.AIDonationData;
-import com.hazyaz.weshare.users.deliveryperson.UpdateDP;
+import com.hazyaz.weshare.users.areaincharge.UpdateDP;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -44,14 +44,17 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
+        Log.d("asdassadasdasd","outside " +
+                "asdidngdo"+classNames);
 
-        if(classNames.equals("AssignDP")){
+        if(classNames.equals("Assign_DPP")){
 
+            Log.d("asdassadasdasd","Insie asdidngdo");
             holder.name.setText(personData.get(0));
             holder.desc.setText(personData.get(1)+" Phone No "+personData.get(2));
-//            Picasso.get()
-//                    .load(personData.get(3))
-//                    .into(holder.imageViewxx);
+            Picasso.get()
+                    .load(R.drawable.button_background)
+                    .into(holder.imageViewxx);
 
             holder.location.setVisibility(View.GONE);
 

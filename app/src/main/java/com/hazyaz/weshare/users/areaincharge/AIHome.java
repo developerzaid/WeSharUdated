@@ -200,14 +200,30 @@ public class AIHome extends AppCompatActivity {
             startActivity(new Intent(AIHome.this, AILogin.class));
         }
         else{
-            String uid = mAuth.getCurrentUser().getUid();
+
             firebaseDatabase = FirebaseDatabase.getInstance();
 
             databaseReference = firebaseDatabase.getReference("donater");
             innerDB = firebaseDatabase.getReference("donater");
             AiDB = firebaseDatabase.getReference("area_incharge");
+
             getAllDonations();
             getUserInfo();
         }
     }
+
+
+    public void updateDeliveryPerson(String donater, String donation, String delivery){
+        firebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference  deliveryData = firebaseDatabase.getReference("delivery_person");
+       deliveryData.child(delivery).child("donation_person").setValue(donater);
+        deliveryData.child(delivery).child("donation_object").setValue(donation);
+
+
+
+    }
+
+
+
+
 }
