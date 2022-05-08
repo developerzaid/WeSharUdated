@@ -30,15 +30,23 @@ public class GetLocation {
     int PERMISSION_ID = 44;
     Activity mMain;
     String lat, lon;
+    private LocationCallback mLocationCallback = new LocationCallback() {
 
-    public GetLocation(Activity main){
+        @Override
+        public void onLocationResult(LocationResult locationResult) {
+            Location mLastLocation = locationResult.getLastLocation();
+            Log.d("this is latitude", mLastLocation.getLatitude() + "");
+            Log.d("this is latitude", mLastLocation.getLongitude() + "");
+        }
+    };
+
+
+    public GetLocation(Activity main) {
         mMain = main;
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(main);
         getLastLocation();
 
     }
-
-
 
     @SuppressLint("MissingPermission")
     private void getLastLocation() {
@@ -59,10 +67,10 @@ public class GetLocation {
                         if (location == null) {
                             requestNewLocationData();
                         } else {
-                            Log.d("thisislatitude",location.getLatitude() + "");
-                            MainActivity.lat = location.getLatitude()+"";
+                            Log.d("thisislatitude", location.getLatitude() + "");
+                            MainActivity.lat = location.getLatitude() + "";
                             MainActivity.lon = location.getLongitude() + "";
-                            Log.d("this is longitude",location.getLongitude() + "");
+                            Log.d("this is longitude", location.getLongitude() + "");
                         }
                     }
                 });
@@ -94,16 +102,6 @@ public class GetLocation {
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(mMain);
         mFusedLocationClient.requestLocationUpdates(mLocationRequest, mLocationCallback, Looper.myLooper());
     }
-
-    private LocationCallback mLocationCallback = new LocationCallback() {
-
-        @Override
-        public void onLocationResult(LocationResult locationResult) {
-            Location mLastLocation = locationResult.getLastLocation();
-            Log.d("this is latitude",mLastLocation.getLatitude() + "");
-            Log.d("this is latitude",mLastLocation.getLongitude() + "");
-        }
-    };
 
     private boolean checkPermissions() {
         return ActivityCompat.checkSelfPermission(mMain, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(mMain, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED;

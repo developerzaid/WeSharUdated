@@ -1,16 +1,10 @@
 package com.hazyaz.weshare.users.donater;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.os.BugreportManager;
 import android.os.Bundle;
-import android.util.AttributeSet;
 import android.util.Patterns;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,8 +14,6 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -32,7 +24,6 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.hazyaz.weshare.R;
-import com.hazyaz.weshare.users.areaincharge.AIHome;
 
 import java.util.HashMap;
 
@@ -44,7 +35,7 @@ public class DonaterRegister extends AppCompatActivity {
             "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh",
             "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadweep", "Puducherry"};
 
-    EditText don_name, don_password, don_email,don_city, don_phone,don_area;
+    EditText don_name, don_password, don_email, don_city, don_phone, don_area;
     Spinner donStateSpinner;
     Button register_don_button;
     ProgressDialog progressDialog;
@@ -54,9 +45,6 @@ public class DonaterRegister extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donater_register);
-
-
-
 
 
         don_name = findViewById(R.id.don_reg_name);
@@ -74,7 +62,7 @@ public class DonaterRegister extends AppCompatActivity {
                         area); //selected item will look like a spinner set from XML
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout
                 .simple_spinner_dropdown_item);
-        donStateSpinner .setAdapter(spinnerArrayAdapter);
+        donStateSpinner.setAdapter(spinnerArrayAdapter);
         progressDialog = new ProgressDialog(this, 4);
 
         register_don_button.setOnClickListener(new View.OnClickListener() {
@@ -89,7 +77,7 @@ public class DonaterRegister extends AppCompatActivity {
                 email = don_email.getText().toString();
                 phone = don_phone.getText().toString();
                 city = don_city.getText().toString();
-                state = donStateSpinner .getSelectedItem().toString();
+                state = donStateSpinner.getSelectedItem().toString();
                 area = don_area.getText().toString();
 
 
@@ -105,75 +93,73 @@ public class DonaterRegister extends AppCompatActivity {
                     don_password.setFocusable(true);
                 }
 
-                registerDonater(name, pass, email, phone,state, city, area);
+                registerDonater(name, pass, email, phone, state, city, area);
             }
         });
 
     }
 
 
-     void registerDonater(String name, String pass, String email, String phone,String state, String city, String area){
-         ProgressDialog progressDialog
-                 = new ProgressDialog(this);
-         progressDialog.setTitle("Registering User");
-         progressDialog.setMessage("Please wait, registration in progress");
-         progressDialog.show();
+    void registerDonater(String name, String pass, String email, String phone, String state, String city, String area) {
+        ProgressDialog progressDialog
+                = new ProgressDialog(this);
+        progressDialog.setTitle("Registering User");
+        progressDialog.setMessage("Please wait, registration in progress");
+        progressDialog.show();
 
-         final FirebaseAuth mAuth=FirebaseAuth.getInstance();
-         mAuth.createUserWithEmailAndPassword(email,pass)
-                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                     @Override
-                     public void onComplete(@NonNull Task<AuthResult> task) {
+        final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth.createUserWithEmailAndPassword(email, pass)
+                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
 
-                         if (task.isSuccessful()) {
-
-
-                             progressDialog.dismiss();
-                             FirebaseUser user = mAuth.getCurrentUser();
-
-                             String uid=user.getUid();
-
-                             HashMap<Object,String> hashMap=new HashMap<>();
-
-                             hashMap.put("name",name);
-                             hashMap.put("email",email);
-                             hashMap.put("phone",phone);
-                             hashMap.put("state",state);
-                             hashMap.put("city",city);
-                             hashMap.put("area",area);
+                        if (task.isSuccessful()) {
 
 
-                             FirebaseDatabase database=FirebaseDatabase.getInstance();
+                            progressDialog.dismiss();
+                            FirebaseUser user = mAuth.getCurrentUser();
 
-                             DatabaseReference reference=database.getReference("donater");
-                             reference.child(uid).setValue(hashMap);
-                             //sucess
-                             startActivity(new Intent(DonaterRegister.this, DonaterHome.class));
-                         }
-                         else {
-                             progressDialog.dismiss();
-                             Toast.makeText(getApplicationContext(), "Authentication Failed", Toast.LENGTH_SHORT).show();
-                         }
+                            String uid = user.getUid();
 
+                            HashMap<Object, String> hashMap = new HashMap<>();
 
-                     }
-                 }).addOnFailureListener(new OnFailureListener() {
-             @Override
-             public void onFailure(@NonNull Exception e) {
-                 progressDialog.dismiss();
-                 Toast.makeText(getApplicationContext(),""+e.getMessage(),Toast.LENGTH_SHORT).show();
-             }
-         });
+                            hashMap.put("name", name);
+                            hashMap.put("email", email);
+                            hashMap.put("phone", phone);
+                            hashMap.put("state", state);
+                            hashMap.put("city", city);
+                            hashMap.put("area", area);
 
 
-     }
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
+
+                            DatabaseReference reference = database.getReference("donater");
+                            reference.child(uid).setValue(hashMap);
+                            //sucess
+                            startActivity(new Intent(DonaterRegister.this, DonaterHome.class));
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(getApplicationContext(), "Authentication Failed", Toast.LENGTH_SHORT).show();
+                        }
+
+
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception e) {
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+    }
 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
         finish();
     }
-
 
 
 }

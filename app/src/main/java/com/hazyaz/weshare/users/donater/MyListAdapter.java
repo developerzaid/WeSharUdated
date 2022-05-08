@@ -9,25 +9,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-
 import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.hazyaz.weshare.R;
 import com.hazyaz.weshare.users.areaincharge.AIDonationData;
-import com.hazyaz.weshare.users.areaincharge.UpdateDP;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
-public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder>{
-    private final ArrayList<ArrayList<String >> listdata;
-    ArrayList<String > personData;
+public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder> {
+    private final ArrayList<ArrayList<String>> listdata;
+    ArrayList<String> personData;
     String classNames;
     Context context;
 
     // RecyclerView recyclerView;
-    public MyListAdapter(ArrayList<ArrayList<String>> listdata, String clssNam, Context conte, ArrayList<String > person) {
+    public MyListAdapter(ArrayList<ArrayList<String>> listdata, String clssNam, Context conte, ArrayList<String> person) {
         this.listdata = listdata;
         this.classNames = clssNam;
         this.context = conte;
@@ -37,100 +35,60 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        View listItem= layoutInflater.inflate(R.layout.donater_listitem, parent, false);
+        View listItem = layoutInflater.inflate(R.layout.donater_listitem, parent, false);
         ViewHolder viewHolder = new ViewHolder(listItem);
         return viewHolder;
     }
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Log.d("asdassadasdasd","outside " +
-                "asdidngdo"+classNames);
-
-        if(classNames.equals("Assign_DPP")){
-
-            Log.d("asdassadasdasd","Insie asdidngdo");
-            holder.name.setText(personData.get(0));
-            holder.desc.setText(personData.get(1)+" Phone No "+personData.get(2));
-            Picasso.get()
-                    .load(R.drawable.button_background)
-                    .into(holder.imageViewxx);
-
-            holder.location.setVisibility(View.GONE);
-
-            String person_key = personData.get(7);
-            String donation_key = personData.get(8);
-            String delivery_person = personData.get(9);
+        Log.d("asdassadasdasd", "outside " +
+                "asdidngdo" + classNames);
 
 
-            holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+        final ArrayList<String> myListData = listdata.get(position);
 
-                    Intent i = new Intent(context, UpdateDP.class);
-
-//                    Donater UID
-                    i.putExtra("person_key",person_key);
-//                    Donation UID
-                    i.putExtra("donation_key",donation_key);
-                    i.putExtra("delivery_person",delivery_person);
+        Log.d("", "Inside My list");
+        holder.name.setText(myListData.get(0));
+        holder.desc.setText(myListData.get(1));
+        Picasso.get()
+                .load(myListData.get(3))
+                .into(holder.imageViewxx);
+        holder.location.setText("Donation with: " + myListData.get(4));
 
 
+        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(context, AIDonationData.class);
 
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(i);
+                i.putExtra("itemname", myListData.get(0));
+                i.putExtra("itemdesc", myListData.get(1));
+                i.putExtra("time", myListData.get(2));
+                i.putExtra("Image", myListData.get(3));
+                i.putExtra("donation_with", myListData.get(4));
+                i.putExtra("current_location", myListData.get(5));
 
-
-                }
-            });
-        }
-        else{
-            final ArrayList<String> myListData = listdata.get(position);
-
-            Log.d("","Inside My list");
-            holder.name.setText(myListData.get(0));
-            holder.desc.setText(myListData.get(1));
-            Picasso.get()
-                    .load(myListData.get(3))
-                    .into(holder.imageViewxx);
-            holder.location.setText("Donation with: "+myListData.get(4));
+                i.putExtra("donation_key", myListData.get(6));
+                i.putExtra("person_key", myListData.get(7));
 
 
+                i.putExtra("name", personData.get(0));
+                i.putExtra("area", personData.get(1));
+                i.putExtra("city", personData.get(2));
+                i.putExtra("state", personData.get(3));
+                i.putExtra("phone", personData.get(4));
+                i.putExtra("email", personData.get(5));
+                i.putExtra("activity", classNames);
+                i.putExtra("DeliveryPersonUID", "null");
 
-            holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-
-                    Intent i = new Intent(context, AIDonationData.class);
-                    i.putExtra("itemname",myListData.get(0));
-                    i.putExtra("itemdesc",myListData.get(1));
-                    i.putExtra("time",myListData.get(2));
-                    i.putExtra("Image",myListData.get(3));
-                    i.putExtra("donation_with",myListData.get(4));
-                    i.putExtra("current_location",myListData.get(5));
-                    i.putExtra("donation_key",myListData.get(6));
-                    i.putExtra("person_key",myListData.get(7));
+                i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(i);
 
 
-                    i.putExtra("name",personData.get(0));
-                    i.putExtra("area",personData.get(1));
-                    i.putExtra("city",personData.get(2));
-                    i.putExtra("state",personData.get(3));
-                    i.putExtra("phone",personData.get(4));
-                    i.putExtra("email",personData.get(5));
-                    i.putExtra("activity",classNames);
-                    i.putExtra("DeliveryPersonUID","null");
+            }
+        });
 
-
-                    i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(i);
-
-
-
-                }
-            });
-        }
 
     }
 
@@ -142,8 +100,9 @@ public class MyListAdapter extends RecyclerView.Adapter<MyListAdapter.ViewHolder
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         public ImageView imageViewxx;
-        public TextView name,desc,location;
+        public TextView name, desc, location;
         public CardView relativeLayout;
+
         public ViewHolder(View itemView) {
             super(itemView);
             this.imageViewxx = (ImageView) itemView.findViewById(R.id.imageViewwe);

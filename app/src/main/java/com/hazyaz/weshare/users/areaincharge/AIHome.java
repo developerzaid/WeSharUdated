@@ -1,19 +1,16 @@
 package com.hazyaz.weshare.users.areaincharge;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.util.Log;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.content.SharedPreferences;
-import android.media.Image;
-import android.os.Bundle;
-import android.preference.PreferenceManager;
-import android.util.Log;
-import android.widget.ArrayAdapter;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -26,8 +23,6 @@ import com.hazyaz.weshare.R;
 import com.hazyaz.weshare.users.donater.MyListAdapter;
 
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
 import java.util.Objects;
 
 public class AIHome extends AppCompatActivity {
@@ -42,6 +37,7 @@ public class AIHome extends AppCompatActivity {
     RecyclerView recyclerView;
     String userKey;
     TextView uName, uPhone, uCity, uEmail, totDonations;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -58,29 +54,23 @@ public class AIHome extends AppCompatActivity {
         uEmail = findViewById(R.id.UEmailx);
 
 
-
-        adapter = new MyListAdapter(donations,"AIHome",getApplicationContext(),DonationPreson);
+        adapter = new MyListAdapter(donations, "AIHome", getApplicationContext(), DonationPreson);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
 
 
-
     }
 
 
-
-
-
-
-    void getUserInfo(){
+    void getUserInfo() {
 
         AiDB.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                String uid  = mAuth.getCurrentUser().getUid();
+                String uid = mAuth.getCurrentUser().getUid();
 
                 String name = snapshot.child(uid).child("name").getValue().toString();
                 String area = "";
@@ -96,11 +86,11 @@ public class AIHome extends AppCompatActivity {
                 DonationPreson.add(phone);
                 DonationPreson.add(email);
 
-                Log.d("AIData1",""+name+email);
+                Log.d("AIData1", "" + name + email);
                 uName.setText(name);
                 uEmail.setText(email);
                 uPhone.setText(phone);
-                uCity.setText(area+", "+city+", "+state);
+                uCity.setText(area + ", " + city + ", " + state);
 
             }
 
@@ -112,15 +102,14 @@ public class AIHome extends AppCompatActivity {
     }
 
 
-
-    void getAllDonations(){
+    void getAllDonations() {
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Object ic = snapshot.getValue();
 
 
-                for (DataSnapshot dsp: snapshot.getChildren()){
+                for (DataSnapshot dsp : snapshot.getChildren()) {
                     String key = dsp.getKey();
                     assert key != null;
                     userKey = key;
@@ -129,9 +118,9 @@ public class AIHome extends AppCompatActivity {
                         @Override
                         public void onDataChange(@NonNull DataSnapshot snapshot) {
 
-                            for(DataSnapshot isp: snapshot.getChildren()){
+                            for (DataSnapshot isp : snapshot.getChildren()) {
                                 ArrayList<String> data = new ArrayList<>();
-                                String keyy = snapshot.child(Objects.requireNonNull(isp.getKey())).toString();
+
                                 String donationName = snapshot.child(Objects.requireNonNull(isp.getKey())).child("donation_name").getValue().toString();
                                 String donationDesc = snapshot.child(Objects.requireNonNull(isp.getKey())).child("donation_desc").getValue().toString();
                                 String timestamp = snapshot.child(Objects.requireNonNull(isp.getKey())).child("timestamp").getValue().toString();
@@ -140,19 +129,22 @@ public class AIHome extends AppCompatActivity {
                                 String CurrentLocation = snapshot.child(Objects.requireNonNull(isp.getKey())).child("current_location").getValue().toString();
 
 
-                                    data.add(donationName);
-                                    data.add(donationDesc);
-                                    data.add(timestamp);
-                                    data.add(ImageXX);
-                                    data.add(donationWith);
-                                    data.add(CurrentLocation);
-                                    data.add(keyy);
-                                    data.add(userKey);
-                                Log.d("AIData2",""+donationDesc);
+                                data.add(donationName);
+                                data.add(donationDesc);
+                                data.add(timestamp);
+                                data.add(ImageXX);
+                                data.add(donationWith);
+                                data.add(CurrentLocation);
 
-                                    donations.add(data);
 
-                                   adapter.notifyDataSetChanged();
+                                data.add(isp.getKey());
+                                data.add(dsp.getKey());
+
+                                Log.d("AIData2", "" + isp.getKey() + "   " + dsp.getKey());
+
+                                donations.add(data);
+
+                                adapter.notifyDataSetChanged();
 
 //                                Log.d("asdasdas 2",""+snapshot.child(Objects.requireNonNull(isp.getKey())).child("Donation Name").getValue());
 
@@ -168,11 +160,7 @@ public class AIHome extends AppCompatActivity {
                     });
 
 
-
-                 Log.d("thisisdoantion",""+dsp.getKey());
-
-
-
+                    Log.d("thisisdoantion", "" + dsp.getKey());
 
 
                 }
@@ -191,15 +179,14 @@ public class AIHome extends AppCompatActivity {
 
         SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
 
-        String AILogged =prefs.getString("AreaIncharge","");
+        String AILogged = prefs.getString("AreaIncharge", "");
 
         FirebaseUser currentUser = mAuth.getCurrentUser();
 
-        Log.d("thisiscurrent",""+currentUser);
-        if(currentUser==null){
+        Log.d("thisiscurrent", "" + currentUser);
+        if (currentUser == null) {
             startActivity(new Intent(AIHome.this, AILogin.class));
-        }
-        else{
+        } else {
 
             firebaseDatabase = FirebaseDatabase.getInstance();
 
@@ -213,17 +200,13 @@ public class AIHome extends AppCompatActivity {
     }
 
 
-    public void updateDeliveryPerson(String donater, String donation, String delivery){
+    public void updateDeliveryPerson(String donater, String donation, String delivery) {
         firebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference  deliveryData = firebaseDatabase.getReference("delivery_person");
-       deliveryData.child(delivery).child("donation_person").setValue(donater);
-        deliveryData.child(delivery).child("donation_object").setValue(donation);
-
+        DatabaseReference deliveryData = firebaseDatabase.getReference("delivery_person");
+        deliveryData.child(delivery).child("donations").child(donater).child("donation_object").setValue(donation);
 
 
     }
-
-
 
 
 }

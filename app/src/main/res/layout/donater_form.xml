@@ -1,80 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:orientation="vertical"
+    android:layout_height="match_parent"
     android:background="@color/white"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
 
 
     <LinearLayout
-        android:layout_margin="20dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        >
+        android:layout_margin="20dp"
+        android:orientation="vertical">
+
         <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="SUBMIT YOUR DONATION"
-            android:textSize="20sp"
             android:layout_marginBottom="40dp"
+            android:text="SUBMIT YOUR DONATION"
             android:textColor="#FF9800"
-            android:textStyle="bold"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Donation Name"
-            android:textSize="20sp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:hint="Donation Name"
             android:id="@+id/donation_name"
-            android:layout_height="wrap_content"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Donation Name" />
 
         <TextView
-            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
             android:text="Donation Description"
-            android:textSize="20sp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
-            android:layout_width="match_parent"
-            android:hint="Donation Description"
             android:id="@+id/donation_description"
-            android:layout_height="wrap_content"/>
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Donation Description" />
 
 
+        <Button
+            android:id="@+id/ItemImagexxx"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_background"
+            android:text="Upload Image" />
 
-
-
-
-    <Button
-        android:layout_marginTop="20dp"
-        android:background="@drawable/button_background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Upload Image"
-        android:id="@+id/ItemImagexxx"/>
-
-  <Button
-      android:layout_marginTop="20dp"
-      android:layout_marginBottom="40dp"
-      android:background="@drawable/button_background"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="Submit Donation"
-    android:id="@+id/submit_donation_form"/>
+        <Button
+            android:id="@+id/submit_donation_form"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/button_background"
+            android:text="Submit Donation" />
 
 
     </LinearLayout>

@@ -1,15 +1,12 @@
 package com.hazyaz.weshare.users.areaincharge;
 
-import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.util.Patterns;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,9 +14,7 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -40,11 +35,10 @@ public class AIRegister extends AppCompatActivity {
             "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan",
             "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttarakhand", "Uttar Pradesh", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh",
             "Dadra and Nagar Haveli", "Daman and Diu", "Delhi", "Lakshadweep", "Puducherry"};
-    EditText ai_name, ai_password, ai_email,ai_city, ai_phone, ai_;
+    EditText ai_name, ai_password, ai_email, ai_city, ai_phone, ai_;
     Spinner StateSpinner;
     Button register_ai_button;
     ProgressDialog progressDialog;
-
 
 
     @Override
@@ -67,7 +61,7 @@ public class AIRegister extends AppCompatActivity {
         spinnerArrayAdapter.setDropDownViewResource(android.R.layout
                 .simple_spinner_dropdown_item);
         StateSpinner.setAdapter(spinnerArrayAdapter);
-        progressDialog=new ProgressDialog(this,4);
+        progressDialog = new ProgressDialog(this, 4);
 
 
         register_ai_button.setOnClickListener(new View.OnClickListener() {
@@ -83,33 +77,30 @@ public class AIRegister extends AppCompatActivity {
                 city = ai_city.getText().toString();
                 state = StateSpinner.getSelectedItem().toString();
 
-                if(email.equals("")||name.equals("")||phone.equals("")||
-                        city.equals("")||pass.equals("") ||area.equals("")     ){
+                if (email.equals("") || name.equals("") || phone.equals("") ||
+                        city.equals("") || pass.equals("") || area.equals("")) {
                     Toast.makeText(getApplicationContext(), "fill all the data ", Toast.LENGTH_SHORT).show();
-                }
-                else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     ai_email.setError("Invalided Email");
                     ai_email.setFocusable(true);
 
-                }
-                else if(pass.length()<6){
+                } else if (pass.length() < 6) {
                     ai_password.setError("Password length at least 6 characters");
                     ai_password.setFocusable(true);
-                }
-                else{
+                } else {
                     SharedPreferences.Editor editor;
-                    editor= PreferenceManager.getDefaultSharedPreferences(AIRegister.this).edit();
+                    editor = PreferenceManager.getDefaultSharedPreferences(AIRegister.this).edit();
                     editor.putString("AreaIncharge", "LoggedIn");
                     editor.apply();
                 }
-            // Sending data to firebase
-                RegisterAreaIncharge(name,pass,email,phone,city,state);
+                // Sending data to firebase
+                RegisterAreaIncharge(name, pass, email, phone, city, state);
             }
         });
 
     }
 
-    void RegisterAreaIncharge(String name, String pass, String email, String phone, String city,String state){
+    void RegisterAreaIncharge(String name, String pass, String email, String phone, String city, String state) {
 
         ProgressDialog progressDialog
                 = new ProgressDialog(this);
@@ -117,35 +108,34 @@ public class AIRegister extends AppCompatActivity {
         progressDialog.setMessage("Please wait, registration in progress");
         progressDialog.show();
 
-        final FirebaseAuth mAuth=FirebaseAuth.getInstance();
-        mAuth.createUserWithEmailAndPassword(email,pass)
+        final FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        mAuth.createUserWithEmailAndPassword(email, pass)
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
 
                         if (task.isSuccessful()) {
 
-                            String zero="0";
+                            String zero = "0";
                             progressDialog.dismiss();
                             FirebaseUser user = mAuth.getCurrentUser();
-                            String uid=user.getUid();
+                            String uid = user.getUid();
 
-                            HashMap<Object,String> hashMap=new HashMap<>();
+                            HashMap<Object, String> hashMap = new HashMap<>();
 
-                            hashMap.put("name",name);
-                            hashMap.put("email",email);
-                            hashMap.put("phone",phone);
-                            hashMap.put("state",state);
-                            hashMap.put("city",city);
+                            hashMap.put("name", name);
+                            hashMap.put("email", email);
+                            hashMap.put("phone", phone);
+                            hashMap.put("state", state);
+                            hashMap.put("city", city);
 
-                            FirebaseDatabase database=FirebaseDatabase.getInstance();
+                            FirebaseDatabase database = FirebaseDatabase.getInstance();
 
-                            DatabaseReference reference=database.getReference("area_incharge");
+                            DatabaseReference reference = database.getReference("area_incharge");
                             reference.child(uid).setValue(hashMap);
                             //sucess
                             startActivity(new Intent(AIRegister.this, AIHome.class));
-                        }
-                        else {
+                        } else {
                             progressDialog.dismiss();
                             Toast.makeText(getApplicationContext(), "Authentication Failed", Toast.LENGTH_SHORT).show();
                         }
@@ -156,15 +146,12 @@ public class AIRegister extends AppCompatActivity {
             @Override
             public void onFailure(@NonNull Exception e) {
                 progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(),""+e.getMessage(),Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "" + e.getMessage(), Toast.LENGTH_SHORT).show();
             }
         });
 
 
     }
-
-
-
 
 
 }

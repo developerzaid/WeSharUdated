@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_margin="20dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
 
 
         <TextView
-            android:layout_gravity="center"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="DELIVERY PERSON LGOIN"
-            android:textSize="20sp"
+            android:layout_gravity="center"
             android:layout_marginBottom="20dp"
+            android:text="DELIVERY PERSON LGOIN"
             android:textColor="#FF9800"
+            android:textSize="20sp"
             android:textStyle="bold"
 
             />
@@ -28,83 +27,78 @@
             android:id="@+id/animationView"
             android:layout_width="match_parent"
             android:layout_height="200dp"
-            app:lottie_autoPlay="true"
             android:layout_marginBottom="30dp"
+            app:lottie_autoPlay="true"
             app:lottie_fileName="login.json"
-            app:lottie_loop="true"/>
+            app:lottie_loop="true" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Enter Your User Name"
-            android:textSize="20sp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <EditText
+            android:id="@+id/dp_username"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/dp_username"
             android:hint="Username"
 
-            >
-        </EditText>
+            ></EditText>
 
         <TextView
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Enter Your Email"
-            android:textSize="20sp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            />
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
         <EditText
+            android:id="@+id/dp_email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/dp_email"
-            android:hint="Email"
-            >
-        </EditText>
+            android:hint="Email"></EditText>
+
         <TextView
-            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:text="Enter Your Password"
-            android:textSize="20sp"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            />
-        <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/dp_password"
-            android:hint="Password"
-            >
-        </EditText>
-        <Button
-            android:background="@drawable/button_background"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/dp_loginBtn"
-            android:text="Login "
-            android:textColor="@color/colorAccent"
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
-            android:layout_marginTop="20dp">
+        <EditText
+            android:id="@+id/dp_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Password"></EditText>
+
+        <Button
+            android:id="@+id/dp_loginBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/button_background"
+            android:text="Login "
+
+            android:textColor="@color/colorAccent">
 
         </Button>
+
         <Button
-            android:background="@drawable/button_background"
             android:id="@+id/dp_register"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Regitser as donater"
             android:layout_marginTop="10dp"
+            android:background="@drawable/button_background"
+            android:text="Regitser as Delivery Person"
 
             />
-
-
 
 
     </LinearLayout>

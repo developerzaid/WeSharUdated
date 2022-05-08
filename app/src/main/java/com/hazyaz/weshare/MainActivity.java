@@ -1,13 +1,5 @@
 package com.hazyaz.weshare;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
-import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.ui.AppBarConfiguration;
-
 import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
@@ -25,6 +17,13 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+
 import com.google.android.material.navigation.NavigationView;
 import com.hazyaz.weshare.introduction.Introduction;
 import com.hazyaz.weshare.users.admin.AdminHome;
@@ -41,11 +40,11 @@ import com.karumi.dexter.listener.single.PermissionListener;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
-    public static String lat ;
+    public static String lat;
     public static String lon;
     public ActionBarDrawerToggle actionBarDrawerToggle;
     Button bttt;
-    ImageView home, call, location,facebook,instagram;
+    ImageView home, call, location, facebook, instagram;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         bttt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Sdfsdfsdf",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Sdfsdfsdf", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(MainActivity.this, DonaterRegister.class));
             }
         });
@@ -87,10 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         topbarlink();
 
 
-
-
         // method to get the location
-
 
 
 //     This takes permission like we take it for storage
@@ -169,11 +165,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    void topbarlink(){
+    void topbarlink() {
         home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Home Button Pressed",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Home Button Pressed", Toast.LENGTH_LONG).show();
             }
         });
         call.setOnClickListener(new View.OnClickListener() {
@@ -184,26 +180,26 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 startActivity(intent);
             }
         });
-location.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
-                Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345"));
-        startActivity(intent);
-    }
-});
-facebook.setOnClickListener(new View.OnClickListener() {
-    @Override
-    public void onClick(View view) {
-        Toast.makeText(getApplicationContext(),"Facebook Button Pressed",Toast.LENGTH_LONG).show();
-        openLocationSetting();
-    }
-});
+        location.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(android.content.Intent.ACTION_VIEW,
+                        Uri.parse("http://maps.google.com/maps?saddr=20.344,34.34&daddr=20.5666,45.345"));
+                startActivity(intent);
+            }
+        });
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(), "Facebook Button Pressed", Toast.LENGTH_LONG).show();
+                openLocationSetting();
+            }
+        });
 
         instagram.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getApplicationContext(),"Instagram Button Pressed",Toast.LENGTH_LONG).show();
+                Toast.makeText(getApplicationContext(), "Instagram Button Pressed", Toast.LENGTH_LONG).show();
                 new GetLocation(MainActivity.this);
             }
         });
@@ -211,49 +207,46 @@ facebook.setOnClickListener(new View.OnClickListener() {
 
     }
 
-void openLocationSetting(){
-    Dexter.withContext(MainActivity.this)
-            .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
-            .withListener(new PermissionListener() {
-                @Override
-                public void onPermissionGranted(PermissionGrantedResponse response) {
+    void openLocationSetting() {
+        Dexter.withContext(MainActivity.this)
+                .withPermission(Manifest.permission.ACCESS_FINE_LOCATION)
+                .withListener(new PermissionListener() {
+                    @Override
+                    public void onPermissionGranted(PermissionGrantedResponse response) {
 
-                    new GetLocation(MainActivity.this);
-                }
-
-                @Override
-                public void onPermissionDenied(PermissionDeniedResponse response) {
-                    if (response.isPermanentlyDenied()) {
-                        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
-                        builder.setTitle("Permission Denied")
-                                .setMessage("Permission to access device location is permanently denied. you need to go to setting to allow the permission.")
-                                .setNegativeButton("Cancel", null)
-                                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Intent intent = new Intent();
-                                        intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                                        intent.setData(Uri.fromParts("package", getPackageName(), null));
-                                    }
-                                })
-                                .show();
-                    } else {
-                        Toast.makeText(MainActivity.this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                        new GetLocation(MainActivity.this);
                     }
-                }
 
-                @Override
-                public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
-                    permissionToken.continuePermissionRequest();
+                    @Override
+                    public void onPermissionDenied(PermissionDeniedResponse response) {
+                        if (response.isPermanentlyDenied()) {
+                            AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+                            builder.setTitle("Permission Denied")
+                                    .setMessage("Permission to access device location is permanently denied. you need to go to setting to allow the permission.")
+                                    .setNegativeButton("Cancel", null)
+                                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            Intent intent = new Intent();
+                                            intent.setAction(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                                            intent.setData(Uri.fromParts("package", getPackageName(), null));
+                                        }
+                                    })
+                                    .show();
+                        } else {
+                            Toast.makeText(MainActivity.this, "Permission Denied", Toast.LENGTH_SHORT).show();
+                        }
+                    }
 
-                }
+                    @Override
+                    public void onPermissionRationaleShouldBeShown(PermissionRequest permissionRequest, PermissionToken permissionToken) {
+                        permissionToken.continuePermissionRequest();
 
-            })
-            .check();
-}
+                    }
 
-
-
+                })
+                .check();
+    }
 
 
 }

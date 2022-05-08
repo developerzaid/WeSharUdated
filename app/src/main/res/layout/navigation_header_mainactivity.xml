@@ -19,24 +19,22 @@
         app:srcCompat="@mipmap/ic_launcher" />
 
     <TextView
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:text="We Share App"
-        android:textSize="20sp"
-        android:textStyle="bold"
         android:textColor="@color/white"
-        />
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <TextView
 
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="We Share because We Care"
-    android:textSize="15sp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="We Share because We Care"
+        android:textColor="@color/white"
 
-    android:textColor="@color/white"
-    />
+        android:textSize="15sp" />
 
 
 </LinearLayout>

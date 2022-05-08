@@ -1,20 +1,18 @@
 package com.hazyaz.weshare.users.donater;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -32,7 +30,7 @@ public class DonaterHome extends AppCompatActivity {
     ProgressDialog progressDialog;
 
     FirebaseDatabase firebaseDatabase;
-    DatabaseReference databaseReference,databaseRef;
+    DatabaseReference databaseReference, databaseRef;
     FirebaseAuth mAuth;
     ArrayList<ArrayList<String>> donations = new ArrayList<ArrayList<String>>();
     ArrayList<String> personData = new ArrayList<>();
@@ -40,12 +38,12 @@ public class DonaterHome extends AppCompatActivity {
     RecyclerView recyclerView;
     TextView uName, uPhone, uCity, uEmail, totDonations;
     int i = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.donater_home);
         mAuth = FirebaseAuth.getInstance();
-
 
 
         uName = findViewById(R.id.UName);
@@ -59,16 +57,14 @@ public class DonaterHome extends AppCompatActivity {
         recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
 
 
-
-        adapter = new MyListAdapter(donations,"DonaterHome",getApplicationContext(),personData);
+        adapter = new MyListAdapter(donations, "DonaterHome", getApplicationContext(), personData);
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
         recyclerView.setAdapter(adapter);
 //
 
-        progressDialog=new ProgressDialog(this,4);
-
+        progressDialog = new ProgressDialog(this, 4);
 
 
         Button donate = findViewById(R.id.donate_button);
@@ -76,7 +72,7 @@ public class DonaterHome extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-               startActivity(new Intent(DonaterHome.this, DonationForm.class));
+                startActivity(new Intent(DonaterHome.this, DonationForm.class));
             }
         });
 
@@ -93,17 +89,16 @@ public class DonaterHome extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
 
-        if(mAuth.getCurrentUser()==null){
+        if (mAuth.getCurrentUser() == null) {
 
-        startActivity(new Intent(DonaterHome.this,DonaterLogin.class));
+            startActivity(new Intent(DonaterHome.this, DonaterLogin.class));
 
-        }
-        else{
+        } else {
             String uid = Objects.requireNonNull(mAuth.getCurrentUser()).getUid();
             firebaseDatabase = FirebaseDatabase.getInstance();
             databaseReference = firebaseDatabase.getReference("donater").child(uid).child("donations");
             databaseRef = firebaseDatabase.getReference("donater").child(uid);
-             getUserInfo();
+            getUserInfo();
             getDonationInfo();
 
         }
@@ -111,7 +106,7 @@ public class DonaterHome extends AppCompatActivity {
 
     }
 
-    void getUserInfo(){
+    void getUserInfo() {
 
         databaseRef.addValueEventListener(new ValueEventListener() {
             @SuppressLint("SetTextI18n")
@@ -132,10 +127,10 @@ public class DonaterHome extends AppCompatActivity {
                 personData.add(phone);
                 personData.add(email);
 
-                uName.setText("Name: "+name);
-                uCity.setText("Address: "+area+", "+city+", "+state);
-                uPhone.setText("Phone no: "+phone);
-                uEmail.setText("Email: "+email);
+                uName.setText("Name: " + name);
+                uCity.setText("Address: " + area + ", " + city + ", " + state);
+                uPhone.setText("Phone no: " + phone);
+                uEmail.setText("Email: " + email);
 
 
             }
@@ -149,15 +144,14 @@ public class DonaterHome extends AppCompatActivity {
     }
 
 
-
-    void getDonationInfo(){
+    void getDonationInfo() {
 
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
 
 
-                for (DataSnapshot dsp: snapshot.getChildren()){
+                for (DataSnapshot dsp : snapshot.getChildren()) {
 
                     ArrayList<String> data = new ArrayList<>();
 
@@ -170,23 +164,23 @@ public class DonaterHome extends AppCompatActivity {
                     String currentLocation = dsp.child("current_location").getValue().toString();
 
 
-                     data.add(item_name);
-                     data.add(item_desc);
-                     data.add(donatedOn);
-                     data.add(Imagecc);
+                    data.add(item_name);
+                    data.add(item_desc);
+                    data.add(donatedOn);
+                    data.add(Imagecc);
 
-                     data.add(donationWith);
-                     data.add(currentLocation);
+                    data.add(donationWith);
+                    data.add(currentLocation);
 
-                     donations.add(data);
-                     adapter.notifyDataSetChanged();
+                    donations.add(data);
+                    adapter.notifyDataSetChanged();
 
 
 //                    Toast.makeText(DonaterHome.this,""+data,Toast.LENGTH_LONG).show();
 
                 }
 
-                String key  = snapshot.getKey();
+                String key = snapshot.getKey();
 
                 // String name = snapshot.child(key).child("Donater Name").getValue().toString();
                 // after getting the value we are setting
@@ -203,7 +197,6 @@ public class DonaterHome extends AppCompatActivity {
         });
 
     }
-
 
 
 }

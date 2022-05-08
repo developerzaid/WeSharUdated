@@ -1,126 +1,117 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:clickable="true"
+    android:orientation="vertical"
     tools:context=".users.areaincharge.AIDonationData">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:layout_margin="20dp"
-    >
-
-
-    <TextView
-        android:layout_marginTop="20dp"
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_margin="20dp"
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="DETAILED DONATION INFO"
-        android:textSize="20sp"
-        android:layout_marginBottom="20dp"
-        android:textColor="#FF9800"
-        android:textStyle="bold"
-
-        />
-
-<ImageView
-    android:scaleType="fitXY"
-    android:layout_margin="20dp"
-    android:layout_width="match_parent"
-    android:layout_height="300dp"
-    android:id="@+id/singleDonationImg"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Name"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:id="@+id/xUserName"
-/>
+        android:orientation="vertical">
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Donation Location"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:id="@+id/xUserCity"
-        />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="DETAILED DONATION INFO"
+            android:textColor="#FF9800"
+            android:textSize="20sp"
+            android:textStyle="bold"
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="User Phone"
+            />
 
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:id="@+id/xUserPhone"
-        />
+        <ImageView
+            android:id="@+id/singleDonationImg"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_margin="20dp"
+            android:scaleType="fitXY" />
 
-    <TextView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Item Name"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-    android:textSize="20sp"
-    android:id="@+id/xItemName"
-    />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Item Description "
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:id="@+id/xItemDesc"
-        />
+        <TextView
+            android:id="@+id/xUserName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="User Name"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Current Location"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:id="@+id/xCurrentLocation"
-        />
+        <TextView
+            android:id="@+id/xUserCity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Donation Location"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Track Donation"
-        android:textSize="20sp"
-        android:layout_marginBottom="10dp"
-        android:textColor="@color/black"
-        android:id="@+id/xTrackDonation"
-        />
+        <TextView
+            android:id="@+id/xUserPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
 
-<Button
-    android:layout_marginTop="30dp"
-    android:textStyle="bold"
-    android:layout_marginBottom="30dp"
-    android:textColor="@color/white"
-    android:background="@drawable/button_background"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/xacceptdonation"
-    android:text="Accept Donation"/>
+            android:layout_marginBottom="10dp"
+            android:text="User Phone"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/xItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Item Name"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/xItemDesc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Item Description "
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+
+        <TextView
+            android:id="@+id/xCurrentLocation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Current Location"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/xTrackDonation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:text="Track Donation"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/xacceptdonation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/button_background"
+            android:text="Accept Donation"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+    </LinearLayout>
 
 </ScrollView>

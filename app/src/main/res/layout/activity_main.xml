@@ -7,104 +7,102 @@
     android:layout_height="match_parent"
     tools:openDrawer="start">
 
-<!--Addding the toolbar where the navigation drawer icon will be shown-->
+    <!--Addding the toolbar where the navigation drawer icon will be shown-->
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:background="@color/white"
         android:clickable="true"
-        android:layout_height="match_parent"
-        tools:context=".ContentActivity"
-        android:focusable="true">
+        android:focusable="true"
+        tools:context=".ContentActivity">
 
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
             <include
                 layout="@layout/main_toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
-                />
+                android:layout_height="?attr/actionBarSize" />
 
 
             <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginLeft="20dp"
-                android:layout_width="wrap_content"
-                android:orientation="horizontal"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
+
                 <ImageView
-                    android:layout_margin="5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:id="@+id/homeBtn"
-                    android:src="@drawable/homeicon"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
                     android:layout_marginLeft="0dp"
-                    android:layout_height="50dp">
-                </ImageView>
-                <ImageView
-                    android:layout_margin="5dp"
-                    android:layout_width="0dp"
                     android:layout_weight="1"
+                    android:src="@drawable/homeicon"></ImageView>
+
+                <ImageView
                     android:id="@+id/Call"
-                    android:src="@drawable/callicon"
-                    android:layout_height="50dp">
-                </ImageView>
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:src="@drawable/callicon"></ImageView>
 
                 <ImageView
-                    android:layout_margin="5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:id="@+id/Location"
-                    android:src="@drawable/locationicon"
-                    android:layout_height="50dp">
-                </ImageView>
-                <ImageView
-                    android:layout_margin="5dp"
                     android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
                     android:layout_weight="1"
+                    android:src="@drawable/locationicon"></ImageView>
+
+                <ImageView
                     android:id="@+id/FaceBook"
-                    android:src="@drawable/facebookicon"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
                     android:padding="5dp"
-                    android:layout_height="50dp">
-                </ImageView>
+                    android:src="@drawable/facebookicon"></ImageView>
 
                 <ImageView
-                    android:layout_margin="5dp"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
                     android:id="@+id/Instagram"
-                    android:src="@drawable/instagramicon"
+                    android:layout_width="0dp"
+                    android:layout_height="50dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
 
-                    android:layout_height="50dp">
+                    android:src="@drawable/instagramicon">
 
                 </ImageView>
 
 
             </LinearLayout>
+
             <androidx.cardview.widget.CardView
                 android:layout_width="match_parent"
-                app:cardBackgroundColor="@color/colorAccent"
-                app:cardCornerRadius="20dp"
+                android:layout_height="250dp"
+                android:layout_marginLeft="10dp"
 
                 android:layout_marginTop="30dp"
-                android:layout_marginLeft="10dp"
-                android:layout_marginBottom="10dp"
                 android:layout_marginRight="10dp"
-                android:layout_height="250dp">
+                android:layout_marginBottom="10dp"
+                app:cardBackgroundColor="@color/colorAccent"
+                app:cardCornerRadius="20dp">
 
                 <ImageView
-                    android:scaleType="fitXY"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:src="@drawable/do3"
-                    />
-
+                    android:scaleType="fitXY"
+                    android:src="@drawable/do3" />
 
 
             </androidx.cardview.widget.CardView>
@@ -112,102 +110,94 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="WE SHARE BECAUSE WE CARE"
+                android:textAlignment="center"
                 android:textColor="#FF9800"
                 android:textSize="20sp"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:text="WE SHARE BECAUSE WE CARE"/>
+                android:textStyle="bold" />
 
             <TextView
 
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textSize="15sp"
+                android:text="Using our Application, More than 5000+ people have already benifetted"
                 android:textAlignment="center"
-                android:textStyle="bold"
-                android:text="Using our Application, More than 5000+ people have already benifetted"/>
+                android:textSize="15sp"
+                android:textStyle="bold" />
 
 
             <Button
-                android:layout_margin="20dp"
-                android:background="@drawable/button_background"
-                android:textColor="#000000"
-                android:textStyle="bold"
+                android:id="@+id/becomeDonater"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="20dp"
+                android:background="@drawable/button_background"
                 android:text="Donate with us"
-                android:id="@+id/becomeDonater"
-                />
+                android:textColor="#000000"
+                android:textStyle="bold" />
 
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:text="OUR DONATION CAMPS"
+                android:textAlignment="center"
                 android:textColor="#FF9800"
                 android:textSize="20sp"
-                android:textAlignment="center"
-                android:textStyle="bold"
-                android:text="OUR DONATION CAMPS"/>
+                android:textStyle="bold" />
 
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:background="@drawable/borders"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/do1"
                     android:layout_marginRight="10dp"
-                    />
+                    android:layout_weight="1"
+                    android:background="@drawable/borders"
+                    android:src="@drawable/do1" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/do2"
                     android:layout_marginLeft="10dp"
-                    />
+                    android:layout_weight="1"
+                    android:src="@drawable/do2" />
 
 
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:orientation="horizontal"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_height="wrap_content">
+                android:orientation="horizontal">
 
                 <ImageView
-                    android:background="@drawable/borders"
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/do4"
                     android:layout_marginRight="10dp"
-                    />
+                    android:layout_weight="1"
+                    android:background="@drawable/borders"
+                    android:src="@drawable/do4" />
 
                 <ImageView
                     android:layout_width="0dp"
                     android:layout_height="200dp"
-                    android:layout_weight="1"
-                    android:src="@drawable/do5"
                     android:layout_marginLeft="10dp"
-                    />
+                    android:layout_weight="1"
+                    android:src="@drawable/do5" />
 
 
             </LinearLayout>
-
-
 
 
         </LinearLayout>
-
 
 
     </ScrollView>
@@ -219,7 +209,6 @@
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/navigation_header_mainactivity"
-        app:menu="@menu/menu_mainactivity"
-        />
+        app:menu="@menu/menu_mainactivity" />
 
 </androidx.drawerlayout.widget.DrawerLayout>
